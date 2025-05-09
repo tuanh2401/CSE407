@@ -1,10 +1,10 @@
 package Btap2;
-//Lớp cha
+//Class cha
 abstract class Vehicle {
  public abstract int getMaxSpeed();
 }
 
-//Lớp con Car
+//Class con car
 class Car extends Vehicle {
  @Override
  public int getMaxSpeed() {
@@ -12,7 +12,7 @@ class Car extends Vehicle {
  }
 }
 
-//Lớp con Bicycle
+//Class con bicycle
 class Bicycle extends Vehicle {
  @Override
  public int getMaxSpeed() {
@@ -20,7 +20,7 @@ class Bicycle extends Vehicle {
  }
 }
 
-//Lớp kiểm tra nguyên lý LSP
+//Liskov
 public class Main {
  public static void main(String[] args) {
      Vehicle[] vehicles = new Vehicle[2];
