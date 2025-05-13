@@ -1,52 +1,52 @@
 package Btap3;
 
 abstract class Vehicle {
- public abstract int getMaxSpeed();
+    public abstract int getMaxSpeed();
 }
 
 class Car extends Vehicle {
- @Override
- public int getMaxSpeed() {
-     return 200;
- }
+    @Override
+    public int getMaxSpeed() {
+        return 200;
+    }
 }
 
 class Bicycle extends Vehicle {
- @Override
- public int getMaxSpeed() {
-     return 30;
- }
+    @Override
+    public int getMaxSpeed() {
+        return 30;
+    }
 }
 
-abstract class VehicleFactory {
- public abstract Vehicle createVehicle();
+interface VehicleFactory {
+    Vehicle createVehicle();
 }
 
-class CarFactory extends VehicleFactory {
- @Override
- public Vehicle createVehicle() {
-     return new Car();
- }
+class CarFactory implements VehicleFactory {
+    @Override
+    public Vehicle createVehicle() {
+        return new Car();
+    }
 }
 
-class BicycleFactory extends VehicleFactory {
- @Override
- public Vehicle createVehicle() {
-     return new Bicycle();
- }
+class BicycleFactory implements VehicleFactory {
+    @Override
+    public Vehicle createVehicle() {
+        return new Bicycle();
+    }
 }
 
 public class Main {
- public static void main(String[] args) {
-     VehicleFactory carFactory = new CarFactory();
-     VehicleFactory bicycleFactory = new BicycleFactory();
+    public static void main(String[] args) {
+        VehicleFactory carFactory = new CarFactory();
+        VehicleFactory bicycleFactory = new BicycleFactory();
 
-     Vehicle[] vehicles = new Vehicle[2];
-     vehicles[0] = carFactory.createVehicle();
-     vehicles[1] = bicycleFactory.createVehicle();
+        Vehicle[] vehicles = new Vehicle[2];
+        vehicles[0] = carFactory.createVehicle();
+        vehicles[1] = bicycleFactory.createVehicle();
 
-     for (Vehicle v : vehicles) {
-         System.out.println("Tốc độ tối đa: " + v.getMaxSpeed());
-     }
- }
+        for (Vehicle v : vehicles) {
+            System.out.println("Tốc độ tối đa: " + v.getMaxSpeed());
+        }
+    }
 }
