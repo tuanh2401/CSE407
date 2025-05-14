@@ -18,18 +18,22 @@ class Bicycle extends Vehicle {
     }
 }
 
-interface VehicleFactory {
-    Vehicle createVehicle();
+abstract class VehicleFactory {
+    public abstract Vehicle createVehicle();
+
+    public void print() {
+        System.out.println("Factory: " + this.getClass().getSimpleName() + " đang tạo phương tiện.");
+    }
 }
 
-class CarFactory implements VehicleFactory {
+class CarFactory extends VehicleFactory {
     @Override
     public Vehicle createVehicle() {
         return new Car();
     }
 }
 
-class BicycleFactory implements VehicleFactory {
+class BicycleFactory extends VehicleFactory {
     @Override
     public Vehicle createVehicle() {
         return new Bicycle();
@@ -44,6 +48,9 @@ public class Main {
         Vehicle[] vehicles = new Vehicle[2];
         vehicles[0] = carFactory.createVehicle();
         vehicles[1] = bicycleFactory.createVehicle();
+
+        carFactory.print();       
+        bicycleFactory.print();   
 
         for (Vehicle v : vehicles) {
             System.out.println("Tốc độ tối đa: " + v.getMaxSpeed());
