@@ -138,8 +138,6 @@ public class Main {
         director.makeCar();
         Car car = (Car) director.getResult(); 
         System.out.println("Xe ô tô được tạo: " + car);
-
-        // Tạo Bicycle
         director.makeBicycle();
         Bicycle bicycle = (Bicycle) director.getResult(); 
         System.out.println("Xe đạp được tạo: " + bicycle);
