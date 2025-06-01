@@ -1,11 +1,9 @@
 package btap8;
 
-// Interface Mediator
 interface Mediator {
     void notify(Object sender);
 }
 
-// Lớp Car
 class Car {
     private Mediator m;
 
@@ -14,13 +12,12 @@ class Car {
     }
 
     public int getMaxSpeed() {
-        System.out.println("Car: Tốc độ tối đa.");
+        System.out.println("Xe hơi: Tôi đang kiểm tra tốc độ tối đa.");
         m.notify(this);
         return 200;
     }
 }
 
-// Lớp Bicycle
 class Bicycle {
     private Mediator m;
 
@@ -29,13 +26,12 @@ class Bicycle {
     }
 
     public int getMaxSpeed() {
-        System.out.println("Bicycle: Tốc độ tối đa");
+        System.out.println("Xe đạp: Tôi đang kiểm tra tốc độ tối đa.");
         m.notify(this);
         return 40;
     }
 }
 
-// Lớp MediatorVehicle
 class MediatorVehicle implements Mediator {
     private Car componentCar;
     private Bicycle componentBicycle;
@@ -58,15 +54,13 @@ class MediatorVehicle implements Mediator {
     }
 
     private void reactOnCar() {
-        System.out.println("Mediator: Đã nhận yêu cầu xem tốc độ tối đa từ Car.");
+        System.out.println("Người trung gian: Đã nhận yêu cầu xem tốc độ tối đa từ Xe hơi.");
     }
 
     private void reactOnBicycle() {
-        System.out.println("Mediator: Đã nhận yêu cầu xem tốc độ tối đa từ Bicycle.");
+        System.out.println("Người trung gian: Đã nhận yêu cầu xem tốc độ tối đa từ Xe đạp.");
     }
-}
 
-class main {
     public static void main(String[] args) {
         MediatorVehicle mediator = new MediatorVehicle();
 
@@ -76,7 +70,7 @@ class main {
         mediator.setComponentCar(car);
         mediator.setComponentBicycle(bicycle);
 
-        System.out.println("Tốc độ tối đa của car: " + car.getMaxSpeed() + " km/h");
-        System.out.println("Tốc độ tối đa của bicycle: " + bicycle.getMaxSpeed() + " km/h");
+        System.out.println("Tốc độ tối đa xe hơi: " + car.getMaxSpeed() + " km/h");
+        System.out.println("Tốc độ tối đa xe đạp: " + bicycle.getMaxSpeed() + " km/h");
     }
 }
